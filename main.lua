@@ -17,16 +17,6 @@ targetDrawing.Size = 20
 targetDrawing.Position = Vector2.new(150, 100 + Drawing.Fonts.UI * 50)
 targetDrawing.Outline = true
 
-while true do
-    if tp then
-        targetDrawing.Visible = true
-        targetDrawing.Text = playerss[1].Name..'\nHealth: '..tostring(playerss[1].Character:FindFirstChild('Humanoid').Health)
-    else
-        targetDrawing.Visible = false
-    end
-    wait(0.1)
-end
-
 local function isplayerdead(playerObject)
     if playerObject.Character:FindFirstChild('Humanoid').Health > 0 then
         return false
@@ -137,6 +127,12 @@ inputService.InputBegan:Connect(function(input)
 end)
 
 while true do
-    task.wait(1)
+    if tp then
+        targetDrawing.Visible = true
+        targetDrawing.Text = playerss[1].Name..'\nHealth: '..tostring(playerss[1].Character:FindFirstChild('Humanoid').Health)
+    else
+        targetDrawing.Visible = false
+    end
+    wait(0.5)
     updatePlayers()
 end
